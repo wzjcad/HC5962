@@ -67,7 +67,7 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        svn co https://github.com/liuran001/openwrt-packages/branches/packages
+
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
