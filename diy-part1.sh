@@ -18,4 +18,8 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
  #echo 'src-git openwrt-packages https://github.com/liuran001/openwrt-packages.git' >>feeds.conf.default
-echo 'src-git liuran001_packages https://github.com/liuran001/openwrt-packages' >>feeds.conf.default 
+#echo 'src-git liuran001_packages https://github.com/liuran001/openwrt-packages' >>feeds.conf.default 
+cat >> feeds.conf.default <<EOF
+src-git kenzo https://github.com/kenzok8/openwrt-packages
+src-git passwall https://github.com/xiaorouji/openwrt-passwall
+EOF
