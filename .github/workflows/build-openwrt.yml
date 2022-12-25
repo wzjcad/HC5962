@@ -41,7 +41,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-
+    
+    - name: test
+      run:
+        sudo whoami && pwd && ls -al
+        
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -57,6 +61,10 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
+    - name: test
+      run:
+        sudo whoami && pwd && ls -al
+        
     - name: Clone source code
       working-directory: /workdir
       run: |
