@@ -60,6 +60,7 @@ jobs:
         sudo whoami && id && pwd && ls -al
  
     - name: config
+      run:
         cat >> .config <<EOF
         CONFIG_TARGET_ramips=y
         ONFIG_TARGET_ramips_mt7621=y
