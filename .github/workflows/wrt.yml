@@ -61,7 +61,7 @@ jobs:
  
     - name: config
       run:
-        cat >> .config <<EOF
+        cat > .config <<EOF
         CONFIG_TARGET_ramips=y
         ONFIG_TARGET_ramips_mt7621=y
         CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
