@@ -69,7 +69,7 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+#        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
     - name: Load custom feeds
       run: |
@@ -82,7 +82,11 @@ jobs:
       run: |
         cd openwrt
         make defconfig
-        
+    
+    - name: test
+      run:
+        sudo whoami && pwd && ls -al
+    
     - name: Download package
       run: |
         cd openwrt && make download -j8
