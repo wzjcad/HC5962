@@ -33,11 +33,9 @@ jobs:
  
     - name: config
       run:
-        cat > .config <<EOF
-        CONFIG_TARGET_ramips=y
-        ONFIG_TARGET_ramips_mt7621=y
-        CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
-        EOF
+        echo "CONFIG_TARGET_ramips=y" > .config
+        echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
+        echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
  
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -69,11 +67,9 @@ jobs:
  
     - name: config
       run:
-        cat > .config <<EOF
-        CONFIG_TARGET_ramips=y
-        ONFIG_TARGET_ramips_mt7621=y
-        CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
-        EOF
+        echo "CONFIG_TARGET_ramips=y" > .config
+        echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
+        echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
