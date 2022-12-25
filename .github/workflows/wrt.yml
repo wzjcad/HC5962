@@ -90,6 +90,7 @@ jobs:
         cd openwrt
         cat .config
         make defconfig
+        ./scripts/diffconfig.sh > seed.config
         
     - name: Download package
       run: |
