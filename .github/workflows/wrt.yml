@@ -33,17 +33,17 @@ jobs:
  
     - name: config
       run: |
-        #echo "CONFIG_TARGET_ramips=y" > .config
-        #echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
-        #echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
-        cat > .config <<EOF
-        CONFIG_TARGET_ramips=y
-        ONFIG_TARGET_ramips_mt7621=y
-        CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
-        EOF
+        echo "CONFIG_TARGET_ramips=y" > .config
+        echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
+        echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
         ls -al && cat .config
  
- 
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}  
     
     - name: Installation depends
       run: |
@@ -55,20 +55,10 @@ jobs:
       run:
         sudo whoami && id && pwd && ls -al
         
-   # run: |
-     #   git clone https://github.com/openwrt/openwrt
-	#cd openwrt & ls -al
-
-   # - name: re_feeds
-     # run: |
-	#cd openwrt && echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> feeds.conf.default
-
-	
-    - name: clone & feeds install
+    - name : clone & feeds install
       run: |
         git clone https://github.com/openwrt/openwrt
         cd openwrt
-	#echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall" >> feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
@@ -76,12 +66,11 @@ jobs:
       run:
         sudo whoami && id && pwd && ls -al
  
-    - name: modify ip & config
+    - name: config
       run: |
         cd openwrt
-        sed -i 's/192.168.1.1/192.168.9.199/g' package/base-files/files/bin/config_generate
         echo "CONFIG_TARGET_ramips=y" > .config
-        echo "CONFIG_TARGET_ramips_mt7621=y" >> .config
+        echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
         echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
         ls -al && cat .config
         
