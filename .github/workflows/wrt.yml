@@ -67,12 +67,11 @@ jobs:
  
     - name: config
       run:
+        cd openwrt
         echo "CONFIG_TARGET_ramips=y" > .config
         echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
         echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
-        
-        cp .config openwrt/.config
-        cd openwrt && ls -al
+        ls -al
         cat .config
         
     - name: SSH connection to Actions
