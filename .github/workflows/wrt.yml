@@ -32,7 +32,7 @@ jobs:
  #     uses: actions/checkout@main
  
     - name: config
-      run:
+      run: |
         echo "CONFIG_TARGET_ramips=y" > .config
         echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
         echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
@@ -66,13 +66,12 @@ jobs:
         sudo whoami && id && pwd && ls -al
  
     - name: config
-      run:
+      run: |
         cd openwrt
         echo "CONFIG_TARGET_ramips=y" > .config
         echo "ONFIG_TARGET_ramips_mt7621=y" >> .config
         echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
-        ls -al
-        cat .config
+        && ls -al && cat .config
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
