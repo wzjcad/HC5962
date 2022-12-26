@@ -97,7 +97,7 @@ jobs:
 #        $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: test
-      run:
+      run: |
         cd openwrt
         sudo whoami && id && pwd && ls -al   
         
