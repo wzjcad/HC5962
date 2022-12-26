@@ -55,10 +55,13 @@ jobs:
       run:
         sudo whoami && id && pwd && ls -al
         
-    - name : clone & feeds install
+    - name : clone & add feeds & feeds install
       run: |
         git clone https://github.com/openwrt/openwrt
         cd openwrt
+        echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> feeds.conf.default
+	      echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall" >> feeds.conf.default
+
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
@@ -66,9 +69,10 @@ jobs:
       run:
         sudo whoami && id && pwd && ls -al
  
-    - name: config
+    - name: modify ip & config
       run: |
         cd openwrt
+        sed -i 's/192.168.1.1/192.168.9.199/g' package/base-files/files/bin/config_generate
         echo "CONFIG_TARGET_ramips=y" > .config
         echo "CONFIG_TARGET_ramips_mt7621=y" >> .config
         echo "CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y" >> .config
