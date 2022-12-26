@@ -56,8 +56,8 @@ jobs:
         sudo whoami && id && pwd && ls -al
         
     - name: clone & add feeds 
-      run: |
-        git clone https://github.com/openwrt/openwrt
+      run:
+        sudo git clone https://github.com/openwrt/openwrt
 	
     - name: re_feeds
       run: |
