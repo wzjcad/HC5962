@@ -99,6 +99,7 @@ jobs:
 
     - name: test
       run:
+        cd openwrt
         sudo whoami && id && pwd && ls -al   
         
     - name: Generate config file
