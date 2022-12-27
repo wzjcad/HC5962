@@ -59,6 +59,7 @@ jobs:
         #git clone https://github.com/openwrt/openwrt
         cd openwrt
         cat feeds.conf.default
+        make defconfig
         
     - name : feeds install
       run: |
@@ -136,8 +137,8 @@ jobs:
       run: |
         cd openwrt
         cat .config | grep -Ev '^$|#'
-        make defconfig
-        ./scripts/diffconfig.sh > seed.config
+       # make defconfig
+       # ./scripts/diffconfig.sh > seed.config
         
     - name: Download package
       run: |
