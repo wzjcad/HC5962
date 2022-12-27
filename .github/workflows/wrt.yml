@@ -110,7 +110,7 @@ jobs:
     - name: Generate config file
       run: |
         cd openwrt
-        cat .config | grep -v '#'
+        cat .config | grep -Ev '^$|#'
         make defconfig
         ./scripts/diffconfig.sh > seed.config
         
