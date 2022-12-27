@@ -64,6 +64,8 @@ jobs:
         cat feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
         
     - name: test
       run:
@@ -78,7 +80,7 @@ jobs:
         CONFIG_TARGET_ramips_mt7621=y
         CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y                 
         EOF
-        ls -al && cat .config
+        ls -al && cat .config | grep -Ev '^$|#'
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
