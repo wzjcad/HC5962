@@ -54,7 +54,8 @@ jobs:
         
     - name : clone & feeds install
       run: |
-        git clone https://github.com/coolsnowwolf/lede
+        git clone https://github.com/coolsnowwolf/lede openwrt
+        df -T
         #git clone https://github.com/openwrt/openwrt
         cd openwrt
         cat feeds.conf.default
