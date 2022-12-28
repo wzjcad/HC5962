@@ -78,6 +78,7 @@ jobs:
         
     - name: test
       run:
+        df -hT $PWD
         sudo whoami && id && pwd && ls -al
  
     - name: config
