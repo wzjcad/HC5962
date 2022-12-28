@@ -9,8 +9,8 @@ on:
         default: 'false'
 
 env:
-  #REPO_URL: https://github.com/openwrt/openwrt
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/openwrt/openwrt
+  #REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -54,9 +54,10 @@ jobs:
         
     - name : clone
       run: |
-        git clone https://github.com/coolsnowwolf/lede openwrt
-        df -T
+        #git clone https://github.com/coolsnowwolf/lede openwrt
+        git clone https://github.com/1054009064/openwrt.git
         #git clone https://github.com/openwrt/openwrt
+        df -T
         cd openwrt
         cat feeds.conf.default
         make defconfig
